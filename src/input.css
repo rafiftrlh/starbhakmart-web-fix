@@ -9,12 +9,15 @@
     @apply font-Poppins;
   }
   body {
-    @apply bg-zinc-100
+    @apply bg-zinc-100;
   }
 }
 
 @layer components {
   .CardBody {
     @apply flex flex-col p-3 bg-white rounded-md shadow-md w-40 aspect-square cursor-pointer;
+  }
+  .liCard {
+    @apply py-1 px-1 flex justify-between gap-3 items-center;
   }
 }
