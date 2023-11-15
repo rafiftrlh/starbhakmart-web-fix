@@ -4,37 +4,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- box icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- css -->
+    <link rel="stylesheet" href="/dist/output.css">
+
     <title>Starbhak Mart</title>
 </head>
 
 <body>
     <!-- Start Container ALl -->
-    <div class="">
+    <div class="w-full h-screen bg-neutral-200 flex flex-col justify-between">
 
         <!-- Start Navbar -->
-
+        <div class="w-full bg-sky-500 px-5 py-3 shadow-lg ">
+            <h1 class="text-2xl font-black text-slate-50 tracking-wid">Starbhak Mart</h1>
+        </div>
         <!-- End Navbar -->
 
 
         <!-- Start Center Container -->
+        <div class="w-full h-full flex">
+
+            <!-- Start Sidebar Container -->
+            <div
+                class="h-full w-1/4 px-2 text-slate-50 flex flex-col gap-3 justify-between shadow-xl bg-slate-100 py-2">
+                <div class="flex flex-col gap-3 text-slate-100 font-medium">
+
+                    <select name="delivery" id="delivery"
+                        class="bg-sky-400 py-2 rounded-md relative ring-1 ring-sky-500 cursor-pointer">
+                        <option value="Take Away" class="text-center py-2">Take Away</option>
+                        <option value="Delivery" class="text-center py-2">Delivery</option>
+                    </select>
+
+                    <div class="bg-sky-400 py-2 rounded-md ring-1 ring-sky-500">
+                        <p class="tracking-wide text-center">Mang Jay</p>
+                    </div>
+                </div>
+
+                <div class="h-full">
+                    <h2 class="text-black p-2 font-semibold bg-gray-200 rounded-t-sm">Cart:</h2>
+                    <div class="h-[250px] overflow-y-auto bg-gray-200 rounded-b-sm px-2">
+                        <ul class="h-full text-black divide-y divide-gray-400">
+
+                            <li class="py-1 px-1 flex justify-between gap-3 items-center">
+                                <div class="w-full">
+                                    <div class="text-xs flex justify-between">
+                                        <span id="listNm"><strong>Burger</strong></span>
+                                        <span id="qty" class="text-gray-500 font-semibold">Qty: 1</span>
+                                    </div>
+                                    <div class="text-sm">
+                                        <span><strong>Total: 10.000</strong></span>
+                                    </div>
+                                </div>
+                                <i class='bx bx-trash bx-sm transition cursor-pointer bg-black/5 hover:bg-black/10 rounded-full p-1'
+                                    id="trash"></i>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-gray-200 flex flex-col text-black px-2 py-1 rounded-sm">
+                    <span>Discount: </span>
+                    <div class="flex justify-between">
+                        <span>Tax: </span>
+                        <span class="font-semibold">Rp. 15.000</span>
+                    </div>
+                    <div class="flex justify-between font-semibold">
+                        <span>Total Amount:</span>
+                        <span>Rp. 150.000</span>
+                    </div>
+                </div>
+            </div>
+            <!-- End Sidebar Container -->
 
 
-        <!-- Start Sidebar Container -->
+            <!-- Start Content Container -->
+            <div class="container">
 
-        <!-- End Sidebar Container -->
+                <!-- Start Navbar -->
+                <div class="w-full bg-slate-100 px-3 py-2 flex justify-between">
+                    <h2 class="font-semibold tracking-wide">Item List</h2>
+                    <div class="flex">
+                        <i class='bx bx-search bx-sm'></i>
+                        <i class='bx bx-dots-vertical-rounded bx-sm'></i>
+                        <i class='bx bx-sort bx-sm'></i>
+                    </div>
+                </div>
+                <!-- End Navbar -->
+
+                <div class="container bg-slate-200 h-full grid grid-cols-6 pl-3 py-3">
+
+                    <div class="CardBody">
+                        <img src="/src/assets/burger.jpg" alt="burger" class="aspect-square rounded-sm">
+                        <div class="">
+                            <p id="name-product" class="font-semibold">Burger</p>
+                            <p class="text-sky-400 font-semibold text-xl">Rp. <span id="harga">10000</span></p>
+                        </div>
+                    </div>
+
+                    <div class="CardBody">
+                        <img src="/src/assets/burger.jpg" alt="burger" class="aspect-square rounded-sm">
+                        <div class="">
+                            <p id="name-product" class="font-semibold">Burger2</p>
+                            <p class="text-sky-400 font-semibold text-xl">Rp. <span id="harga">10000</span></p>
+                        </div>
+                    </div>
+
+                    <div class="CardBody">
+                        <img src="/src/assets/burger.jpg" alt="burger" class="aspect-square rounded-sm">
+                        <div class="">
+                            <p id="name-product" class="font-semibold">Burger3</p>
+                            <p class="text-sky-400 font-semibold text-xl harga">Rp. <span id="harga">10000</span></p>
+                        </div>
+                    </div>
+
+                    <div class="CardBody">
+                        <img src="/src/assets/burger.jpg" alt="burger" class="aspect-square rounded-sm">
+                        <div class="">
+                            <p id="name-product" class="font-semibold">Burger4</p>
+                            <p class="text-sky-400 font-semibold text-xl">Rp. <span id="harga">10000</span></p>
+                        </div>
+                    </div>
 
 
-        <!-- Start Content Container -->
+                </div>
+            </div>
 
-        <!-- End Content Container -->
+            <!-- End Content Container -->
 
-
-
+        </div>
         <!-- End Center Container -->
 
 
         <!-- Start Footer -->
-
+        <footer class="bg-slate-100 w-full h-full flex justify-end px-3">
+            <div class="bg-sky-300 flex flex-col px-5 text-xs items-center border-x-8 border-x-sky-200">
+                <p class="tracking-wider"><strong>Payment</strong></p>
+                <p>(CTRL + P)</p>
+            </div>
+        </footer>
         <!-- End Footer -->
 
     </div>
