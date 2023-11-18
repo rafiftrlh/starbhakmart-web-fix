@@ -16,11 +16,12 @@
 
 <body>
     <!-- Start Container ALl -->
-    <div class="w-full h-screen bg-neutral-200 flex flex-col justify-between">
+    <div class="w-full h-screen bg-neutral-200 flex flex-col justify-between overflow-hidden">
 
         <!-- Start Navbar -->
         <div class="w-full bg-sky-500 px-5 py-3 shadow-lg ">
-            <h1 class="text-2xl font-black text-slate-50 tracking-wid">Starbhak Mart</h1>
+            <h1 class="text-2xl font-black text-slate-50 tracking-wid">Starbhak <span
+                    class="text-yellow-300">Mart</span></h1>
         </div>
         <!-- End Navbar -->
 
@@ -45,7 +46,10 @@
                 </div>
 
                 <div class="h-full">
-                    <h2 class="text-black p-2 font-semibold bg-gray-200 rounded-t-sm">Cart:</h2>
+                    <h2 class="text-black p-2 bg-gray-200 rounded-t-sm flex justify-between items-center font-semibold">
+                        Cart:
+                        <i class='bx bx-cart bx-sm'></i>
+                    </h2>
                     <div class="h-[250px] overflow-y-auto bg-gray-200 rounded-b-sm px-2">
                         <ul class="h-full text-black divide-y divide-gray-400" id="container-list">
 
@@ -62,7 +66,7 @@
                     </div>
                     <div class="flex justify-between font-semibold">
                         <span>Total Amount:</span>
-                        <span>Rp. 150.000</span>
+                        <span>Rp. <span id="total"></span></span>
                     </div>
                 </div>
             </div>
@@ -97,7 +101,7 @@
                         <img src="/src/assets/burger.jpg" alt="burger" class="aspect-square rounded-sm">
                         <div class="">
                             <p id="name-product" class="font-semibold">Burger2</p>
-                            <p class="text-sky-400 font-semibold text-xl">Rp. <span id="harga">10000</span></p>
+                            <p class="text-sky-400 font-semibold text-xl">Rp. <span id="harga">20000</span></p>
                         </div>
                     </div>
 
