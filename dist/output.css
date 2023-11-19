@@ -605,8 +605,16 @@ body{
   padding-right: 0.25rem;
 }
 
+.absolute{
+  position: absolute;
+}
+
 .relative{
   position: relative;
+}
+
+.inline-block{
+  display: inline-block;
 }
 
 .flex{
@@ -633,6 +641,10 @@ body{
   height: 100vh;
 }
 
+.h-\[25px\]{
+  height: 25px;
+}
+
 .w-1\/4{
   width: 25%;
 }
@@ -641,16 +653,72 @@ body{
   width: 100%;
 }
 
+.w-\[5\%\]{
+  width: 5%;
+}
+
+.w-\[100\%\]{
+  width: 100%;
+}
+
+.w-\[110\%\]{
+  width: 110%;
+}
+
+.w-\[120\%\]{
+  width: 120%;
+}
+
+.w-1{
+  width: 0.25rem;
+}
+
+.w-1\/2{
+  width: 50%;
+}
+
+.w-10{
+  width: 2.5rem;
+}
+
+.w-\[1\%\]{
+  width: 1%;
+}
+
+.w-\[10\%\]{
+  width: 10%;
+}
+
+.w-\[50\%\]{
+  width: 50%;
+}
+
+.w-\[40\%\]{
+  width: 40%;
+}
+
+.w-\[50px\]{
+  width: 50px;
+}
+
+.w-\[20px\]{
+  width: 20px;
+}
+
+.w-\[30px\]{
+  width: 30px;
+}
+
+.w-\[px\]{
+  width: px;
+}
+
+.w-\[25px\]{
+  width: 25px;
+}
+
 .cursor-pointer{
   cursor: pointer;
-}
-
-.grid-flow-row-dense{
-  grid-auto-flow: row dense;
-}
-
-.grid-cols-6{
-  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .grid-cols-5{
@@ -768,9 +836,14 @@ body{
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
-.bg-slate-900{
+.bg-slate-50{
   --tw-bg-opacity: 1;
-  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+}
+
+.bg-gray-900{
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 
 .p-1{

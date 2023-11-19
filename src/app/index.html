@@ -47,7 +47,11 @@
 
                 <div class="h-full">
                     <h2 class="text-black p-2 bg-gray-200 rounded-t-sm flex justify-between items-center font-semibold">
-                        Cart:
+                        <div class="">
+                            <p>Cart : <span
+                                    class="inline-block w-[25px] h-[25px] text-center rounded-full bg-sky-400 ring-1 ring-sky-500 text-slate-50"
+                                    id="totalCart">0</span></p>
+                        </div>
                         <i class='bx bx-cart bx-sm'></i>
                     </h2>
                     <div class="h-[250px] overflow-y-auto bg-gray-200 rounded-b-sm px-2">
@@ -59,14 +63,14 @@
                 </div>
 
                 <div class="bg-gray-200 flex flex-col text-black px-2 py-1 rounded-sm">
-                    <span>Discount: </span>
+                    <span id="total">Rp. 0 </span>
                     <div class="flex justify-between">
-                        <span>Tax: </span>
-                        <span class="font-semibold">Rp. 15.000</span>
+                        <span>Tax: <span id="tax">0%</span></span>
+                        <span class="font-semibold" id="totalTax">Rp. 0</span>
                     </div>
                     <div class="flex justify-between font-semibold">
                         <span>Total Amount:</span>
-                        <span>Rp. <span id="total"></span></span>
+                        <span id="totalAmount">Rp. 0</span>
                     </div>
                 </div>
             </div>
@@ -89,7 +93,7 @@
 
                 <!-- Start Menu -->
                 <div class="container bg-slate-200 h-full grid grid-cols-5 pl-3 py-3" id="menu">
-                    
+
                 </div>
                 <!-- End Menu -->
 

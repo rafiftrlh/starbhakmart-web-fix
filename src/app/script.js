@@ -1,4 +1,5 @@
-function ShowMenu() {
+$(document).ready(function () {
+  // Menampilkan semua data yang ada di json kedalam html
   $.getJSON("/json/cart.json", function (data) {
     let menu = data.menu;
 
@@ -12,62 +13,75 @@ function ShowMenu() {
       </div>`);
     });
   });
-}
-ShowMenu();
 
-$(document).ready(function () {
-  const CardBody = document.querySelectorAll(".CardBody");
-  const containerList = document.getElementById("container-list");
-  CardBody.forEach(function (card) {
-    card.addEventListener("click", () => {
-      console.log(containerList.childNodes);
-      // if () {
+  // Template cart
+  function InsertList(NAME, PRICE, DATA_ID) {
+    return `<li class="liCard" data-id="${DATA_ID}">
+              <div class="w-full">
+                  <div class="text-xs flex justify-between">
+                      <span class="font-semibold" id="nameCart">${NAME}</span>
+                      <span id="qty" class="text-gray-500 font-semibold">Qty: 1</span>
+                  </div>
+                  <div class="text-sm">
+                      <span class="font-semibold">Total: <span class="priceCart">${PRICE}</span></span>
+                  </div>
+              </div>
+              <i class='bx bx-trash bx-sm transition cursor-pointer bg-black/5 hover:bg-black/10 rounded-full p-1 trashBtn'></i>
+            </li>`;
+  }
 
-      // }
-      console.log(card);
-      const name = card.querySelector("#name-product").textContent;
-      const price = card.querySelector("#price").textContent;
-      const dataId = card.getAttribute("data-id");
-      containerList.innerHTML += InsertList(name, price, dataId);
-      hitung();
-    });
-  });
-});
+  // variable tax
+  let taxSm = 0;
+  let taxPersen = 0;
 
-function InsertList(name, price, dataId) {
-  return `<li class="liCard" data-id="${dataId}">
-            <div class="w-full">
-                <div class="text-xs flex justify-between">
-                    <span class="font-semibold" id="nameCart">${name}</span>
-                    <span id="qty" class="text-gray-500 font-semibold">Qty: 1</span>
-                </div>
-                <div class="text-sm">
-                    <span class="font-semibold">Total: <span class="priceCart">${price}</span></span>
-                </div>
-            </div>
-            <i class='bx bx-trash bx-sm transition cursor-pointer bg-black/5 hover:bg-black/10 rounded-full p-1 trashBtn'></i>
-          </li>`;
-}
-
-function hitung() {
+  // variable total cart
   let totalCart = 0;
 
-  let priceCartAll = document.querySelectorAll(".priceCart");
-  priceCartAll.forEach((p) => {
-    let price = parseInt(p.textContent);
-    totalCart += price;
+  // Menambahkan kedalam cart ketika card menu diklik
+  $("#menu").on("click", ".CardBody", function () {
+    taxSm < 10 ? taxSm++ : taxSm;
+    taxPersen < 10 ? taxPersen++ : taxPersen;
+    totalCart++;
+    const CARD = $(this);
+    const NAME = CARD.find("#name-product").text();
+    const PRICE = CARD.find("#price").text();
+    const DATA_ID = CARD.data("id");
+    $("#container-list").append(InsertList(NAME, PRICE, DATA_ID));
+    hitung(taxSm, totalCart, taxPersen);
   });
 
-  let stTotal = totalCart.toString();
+  // Fungsi menghitung total harga dan cart
+  function hitung(taxSm, totalCart, taxPersen) {
+    let taxFix = taxSm / 100;
+    let totalSm = 0;
 
-  $("#total").html(stTotal);
-  console.log(stTotal);
-}
+    $(".priceCart").each(function () {
+      let price = parseInt($(this).text());
+      totalSm += price;
+    });
 
-document.addEventListener("click", function (e) {
-  if (e.target.classList.contains("trashBtn")) {
-    console.log(e.target.parentElement);
-    e.target.parentElement.remove();
-    hitung();
+    let total = totalSm.toString();
+    let hitungTax = totalSm * taxFix;
+    let totalAmount = totalSm + hitungTax;
+
+    let stTax = Math.round(hitungTax.toString());
+    let stTotal = totalAmount.toString();
+
+    $("#total").html(`Rp. ${total}`);
+    $("#tax").html(`${taxPersen}%`);
+    $("#totalTax").html(`Rp. ${stTax}`);
+    $("#totalCart").html(totalCart);
+    $("#totalAmount").html(`Rp. ${stTotal}`);
   }
+
+  // Menghapus list yang ada di cart
+  $(document).on("click", function (e) {
+    if ($(e.target).hasClass("trashBtn")) {
+      totalCart--;
+      totalCart >= 10 ? taxSm : taxSm--;
+      taxPersen >= 10 ? taxPersen : taxPersen--;
+      $(e.target).parent().remove();
+      hitung(taxSm, totalCart, taxPersen);
+    }
+  });
 });
