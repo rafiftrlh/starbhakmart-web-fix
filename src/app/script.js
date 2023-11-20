@@ -4,7 +4,9 @@ $(document).ready(function () {
     let menu = data.menu;
 
     $.each(menu, function (i, data) {
-      $("#menu").append(`<div class="CardBody" data-id="${data.id}">
+      $(
+        "#menu"
+      ).append(`<div class="CardBody hover:scale-105 transition-all" data-id="${data.id}">
         <img src="${data.image}" alt="${data.name}" class="aspect-square rounded-sm">
           <div class="">
               <p id="name-product" class="font-semibold">${data.name}</p>
@@ -16,11 +18,11 @@ $(document).ready(function () {
 
   // Template cart
   function InsertList(NAME, PRICE, DATA_ID) {
-    return `<li class="liCard" data-id="${DATA_ID}">
+    return `<li class="liCard" data-idCart="${DATA_ID}">
               <div class="w-full">
                   <div class="text-xs flex justify-between">
                       <span class="font-semibold" id="nameCart">${NAME}</span>
-                      <span id="qty" class="text-gray-500 font-semibold">Qty: 1</span>
+                      <span class="text-gray-500 font-semibold">Qty: <span id="qty">1</span></span>
                   </div>
                   <div class="text-sm">
                       <span class="font-semibold">Total: <span class="priceCart">${PRICE}</span></span>
@@ -46,7 +48,19 @@ $(document).ready(function () {
     const NAME = CARD.find("#name-product").text();
     const PRICE = CARD.find("#price").text();
     const DATA_ID = CARD.data("id");
-    $("#container-list").append(InsertList(NAME, PRICE, DATA_ID));
+    const FIND_ID = document.querySelector(
+      `#container-list [data-idCart="${DATA_ID}"]`
+    );
+
+    if (FIND_ID !== null) {
+      let qty_id = $(`#container-list [data-idCart="${DATA_ID}"] #qty`);
+      let qty = parseInt(qty_id.text());
+      qty++;
+      $(qty_id).html(qty);
+    } else {
+      $("#container-list").append(InsertList(NAME, PRICE, DATA_ID));
+    }
+
     hitung(taxSm, totalCart, taxPersen);
   });
 
@@ -77,6 +91,8 @@ $(document).ready(function () {
   // Menghapus list yang ada di cart
   $(document).on("click", function (e) {
     if ($(e.target).hasClass("trashBtn")) {
+      const LIST_CARD = e.target.parentElement;
+      console.log(LIST_CARD);
       totalCart--;
       totalCart >= 10 ? taxSm : taxSm--;
       taxPersen >= 10 ? taxPersen : taxPersen--;
