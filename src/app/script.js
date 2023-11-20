@@ -17,87 +17,80 @@ $(document).ready(function () {
   });
 
   // Template cart
-  function InsertList(NAME, PRICE, DATA_ID) {
-    return `<li class="liCard" data-idCart="${DATA_ID}">
+  function InsertList(id, name, price, qty) {
+    return `<li class="liCard" data-idCart="${id}">
               <div class="w-full">
                   <div class="text-xs flex justify-between">
-                      <span class="font-semibold" id="nameCart">${NAME}</span>
-                      <span class="text-gray-500 font-semibold">Qty: <span id="qty">1</span></span>
+                      <span class="font-semibold" id="nameCart">${name}</span>
+                      <span class="text-gray-500 font-semibold">Qty: <span id="qty">${qty}</span></span>
                   </div>
                   <div class="text-sm">
-                      <span class="font-semibold">Total: <span class="priceCart">${PRICE}</span></span>
+                      <span class="font-semibold">Total: <span class="priceCart">${price}</span></span>
                   </div>
               </div>
               <i class='bx bx-trash bx-sm transition cursor-pointer bg-black/5 hover:bg-black/10 rounded-full p-1 trashBtn'></i>
             </li>`;
   }
 
-  // variable tax
-  let taxSm = 0;
-  let taxPersen = 0;
+  // Variable untuk menyimpan list cart
+  let cart = [];
 
-  // variable total cart
-  let totalCart = 0;
+  // Fungsi untuk menampilkan product yang ada didalam cart
+  function showCart() {
+    $("#container-list").empty();
 
-  // Menambahkan kedalam cart ketika card menu diklik
+    $.each(cart, function (i, vCart) {
+      $("#container-list").append(
+        InsertList(
+          vCart.id_product_in_cart,
+          vCart.name_product_in_cart,
+          vCart.price_product_in_cart,
+          vCart.qty_product_in_cart
+        )
+      );
+    });
+  }
+
+  // Menambahkan product kedalam cart ketika card menu diklik
   $("#menu").on("click", ".CardBody", function () {
-    taxSm < 10 ? taxSm++ : taxSm;
-    taxPersen < 10 ? taxPersen++ : taxPersen;
-    totalCart++;
     const CARD = $(this);
     const NAME = CARD.find("#name-product").text();
     const PRICE = CARD.find("#price").text();
     const DATA_ID = CARD.data("id");
-    const FIND_ID = document.querySelector(
-      `#container-list [data-idCart="${DATA_ID}"]`
+    let qty = 1;
+
+    console.log(cart);
+
+    // Mengecek apakah ID sudah ada dalam array cart
+    const IS_ID_EXISTS = cart.some(
+      (item) => item.id_product_in_cart === DATA_ID
     );
 
-    if (FIND_ID !== null) {
-      let qty_id = $(`#container-list [data-idCart="${DATA_ID}"] #qty`);
-      let qty = parseInt(qty_id.text());
-      qty++;
-      $(qty_id).html(qty);
+    if (!IS_ID_EXISTS) {
+      // Jika ID belum ada, tambahkan ke dalam array
+      let dataCardProduct = {
+        id_product_in_cart: `${DATA_ID}`,
+        name_product_in_cart: `${NAME}`,
+        price_product_in_cart: parseInt(PRICE), // Ubah price ke integer
+        qty_product_in_cart: qty,
+      };
+
+      cart.push(dataCardProduct);
+
+      // console.log(cart);
+
+      showCart();
     } else {
-      $("#container-list").append(InsertList(NAME, PRICE, DATA_ID));
-    }
+      // Jika ID sudah ada, lakukan penambahan ke objek dengan id tersebut
+      const FIND_ID = cart.find((item) => item.id_product_in_cart === DATA_ID);
 
-    hitung(taxSm, totalCart, taxPersen);
-  });
+      // Update total price
+      FIND_ID.price_product_in_cart += parseInt(PRICE);
 
-  // Fungsi menghitung total harga dan cart
-  function hitung(taxSm, totalCart, taxPersen) {
-    let taxFix = taxSm / 100;
-    let totalSm = 0;
+      // Update qty
+      FIND_ID.qty_product_in_cart++;
 
-    $(".priceCart").each(function () {
-      let price = parseInt($(this).text());
-      totalSm += price;
-    });
-
-    let total = totalSm.toString();
-    let hitungTax = totalSm * taxFix;
-    let totalAmount = totalSm + hitungTax;
-
-    let stTax = Math.round(hitungTax.toString());
-    let stTotal = totalAmount.toString();
-
-    $("#total").html(`Rp. ${total}`);
-    $("#tax").html(`${taxPersen}%`);
-    $("#totalTax").html(`Rp. ${stTax}`);
-    $("#totalCart").html(totalCart);
-    $("#totalAmount").html(`Rp. ${stTotal}`);
-  }
-
-  // Menghapus list yang ada di cart
-  $(document).on("click", function (e) {
-    if ($(e.target).hasClass("trashBtn")) {
-      const LIST_CARD = e.target.parentElement;
-      console.log(LIST_CARD);
-      totalCart--;
-      totalCart >= 10 ? taxSm : taxSm--;
-      taxPersen >= 10 ? taxPersen : taxPersen--;
-      $(e.target).parent().remove();
-      hitung(taxSm, totalCart, taxPersen);
+      showCart();
     }
   });
 });

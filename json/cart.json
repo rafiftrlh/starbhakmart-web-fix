@@ -1,31 +1,31 @@
 {
     "menu": [
         {
-            "id": "001",
+            "id": "m001",
             "name": "Burger",
             "image": "/public/burger.jpg",
             "price": 20000
         },
         {
-            "id": "002",
+            "id": "m002",
             "name": "Fried Chicken",
             "image": "/public/friedChicken.jpg",
             "price": 25000
         },
         {
-            "id": "003",
+            "id": "m003",
             "name": "French Fries",
             "image": "/public/frenchFries.jpeg",
             "price": 12000
         },
         {
-            "id": "004",
+            "id": "m004",
             "name": "Fried Rice",
             "image": "/public/friedRice.jpg",
             "price": 15000
         },
         {
-            "id": "005",
+            "id": "m005",
             "name": "Salad",
             "image": "/public/salad.jpg",
             "price": 18000
