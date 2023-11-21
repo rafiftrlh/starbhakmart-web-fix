@@ -1,6 +1,6 @@
 $(document).ready(function () {
   // Menampilkan semua data yang ada di json kedalam html
-  $.getJSON("/json/cart.json", function (data) {
+  $.getJSON("/json/product.json", function (data) {
     let menu = data.menu;
 
     $.each(menu, function (i, data) {
@@ -43,6 +43,9 @@ $(document).ready(function () {
   // Variable untuk menyimpan total qty pada cart
   let jumlahQty = 0;
 
+  // Variable tax
+  let tax = 0;
+
   // Fungsi untuk menampilkan product yang ada didalam cart
   function showCart() {
     $("#container-list").empty();
@@ -66,6 +69,12 @@ $(document).ready(function () {
     const PRICE = CARD.find("#price").text();
     const DATA_ID = CARD.data("id");
     let qty = 1;
+
+    // Tambah jumlah tax
+    tax < 10 ? tax++ : tax;
+    $("#tax").html(`${tax}%`);
+
+    // Update jumlah semua qty
     jumlahQty++;
     $("#totalCart").html(jumlahQty);
 
@@ -97,26 +106,28 @@ $(document).ready(function () {
       FIND_ID.qty_product_in_cart++;
 
       showCart();
-      hitung();
     }
+    hitung();
   });
 
   // Mengurangi qty hingga menghapus product yang ada di dalam cart
   $("#container-list").on("click", ".trashBtn", function () {
     const EL = this.parentElement;
     const ID_IN_CART = EL.getAttribute("data-id-cart");
+
+    // Kurangi tax
+    jumlahQty >= 11 ? tax : tax--;
+    $("#tax").html(`${tax}%`);
+
+    // Update jumlah semua qty
     jumlahQty--;
     $("#totalCart").html(jumlahQty);
-
-    hitung();
-
-    // console.log(ID_IN_CART);
 
     // Mencari ID dalam array cart
     const FIND_ID = cart.find((item) => item.id_product_in_cart === ID_IN_CART);
 
     // Mencari index dalam array cart berdasarkan ID
-    const indexToRemove = cart.findIndex(
+    const INDEX_TO_REMOVE = cart.findIndex(
       (item) => item.id_product_in_cart === ID_IN_CART
     );
 
@@ -130,12 +141,37 @@ $(document).ready(function () {
       FIND_ID.price_product_in_cart -= FIND_ID.price_product_in_cart_perpcs;
     } else {
       // Jika qty = 1 maka hapus data pada array
-      cart.splice(indexToRemove, 1);
+      cart.splice(INDEX_TO_REMOVE, 1);
     }
 
     showCart();
+    hitung();
   });
 
   // Fungsi hitung
-  function hitung() {}
+  function hitung() {
+    // Hitung total jumlah harga yang ada didalam cart
+    let price = 0;
+    let priceAll;
+    if (cart.length < 1) {
+      priceAll = 0;
+    } else {
+      priceAll = cart
+        .map((item) => item.price_product_in_cart)
+        .reduce((total, harga) => total + harga);
+    }
+
+    $("#total").html(`Rp. ${priceAll}`);
+
+    // Ubah tax menjadi persen
+    let taxPersen = tax / 100;
+
+    // Tentukan pajak
+    let taxRp = Math.round(priceAll * taxPersen);
+    $("#totalTax").html(`Rp. ${taxRp}`);
+
+    // Total amount
+    let totalAmount = priceAll + taxRp;
+    $("#totalAmount").html(`Rp. ${totalAmount}`);
+  }
 });
