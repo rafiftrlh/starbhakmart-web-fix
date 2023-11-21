@@ -4,17 +4,22 @@ $(document).ready(function () {
     let menu = data.menu;
 
     $.each(menu, function (i, data) {
-      $(
-        "#menu"
-      ).append(`<div class="CardBody hover:scale-105 transition-all" data-id="${data.id}">
-        <img src="${data.image}" alt="${data.name}" class="aspect-square rounded-sm">
-          <div class="">
-              <p id="name-product" class="font-semibold">${data.name}</p>
-              <p class="text-sky-400 font-semibold text-xl">Rp. <span id="price">${data.price}</span></p>
-          </div>
-      </div>`);
+      $("#menu").append(
+        TemplateCard(data.id, data.image, data.name, data.price)
+      );
     });
   });
+
+  // Template card menu
+  function TemplateCard(id, img, name, price) {
+    return `<div class="CardBody hover:scale-105 transition-all" data-id="${id}">
+    <img src="${img}" alt="${name}" class="aspect-square rounded-sm">
+      <div class="">
+          <p id="name-product" class="font-semibold">${name}</p>
+          <p class="text-sky-400 font-semibold text-xl">Rp. <span id="price">${price}</span></p>
+      </div>
+  </div>`;
+  }
 
   // Template cart
   function InsertList(id, name, price, qty) {
