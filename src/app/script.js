@@ -18,7 +18,7 @@ $(document).ready(function () {
 
   // Template cart
   function InsertList(id, name, price, qty) {
-    return `<li class="liCard" data-idCart="${id}">
+    return `<li class="liCard" data-id-cart="${id}">
               <div class="w-full">
                   <div class="text-xs flex justify-between">
                       <span class="font-semibold" id="nameCart">${name}</span>
@@ -72,6 +72,7 @@ $(document).ready(function () {
         id_product_in_cart: `${DATA_ID}`,
         name_product_in_cart: `${NAME}`,
         price_product_in_cart: parseInt(PRICE), // Ubah price ke integer
+        price_product_in_cart_perpcs: parseInt(PRICE), // Ubah price ke integer
         qty_product_in_cart: qty,
       };
 
@@ -82,15 +83,45 @@ $(document).ready(function () {
       showCart();
     } else {
       // Jika ID sudah ada, lakukan penambahan ke objek dengan id tersebut
+      // Mencari id dalam array
       const FIND_ID = cart.find((item) => item.id_product_in_cart === DATA_ID);
 
       // Update total price
       FIND_ID.price_product_in_cart += parseInt(PRICE);
-
       // Update qty
       FIND_ID.qty_product_in_cart++;
 
       showCart();
     }
+  });
+
+  // Mengurangi qty hingga menghapus product yang ada di dalam cart
+  $("#container-list").on("click", ".trashBtn", function () {
+    const EL = this.parentElement;
+    const ID_IN_CART = EL.getAttribute("data-id-cart");
+    console.log(ID_IN_CART);
+
+    // Mencari ID dalam array cart
+    const FIND_ID = cart.find((item) => item.id_product_in_cart === ID_IN_CART);
+
+    // Mencari index dalam array cart berdasarkan ID
+    const indexToRemove = cart.findIndex(
+      (item) => item.id_product_in_cart === ID_IN_CART
+    );
+
+    // Mencari qty dalam array
+    let qty_in_array = FIND_ID.qty_product_in_cart;
+
+    // Mengecek jumlah qty pada array
+    if (qty_in_array > 1) {
+      // Update qty dan price
+      FIND_ID.qty_product_in_cart--;
+      FIND_ID.price_product_in_cart -= FIND_ID.price_product_in_cart_perpcs;
+    } else {
+      // Jika qty = 1 maka hapus data pada array
+      cart.splice(indexToRemove, 1);
+    }
+
+    showCart();
   });
 });
