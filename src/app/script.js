@@ -40,6 +40,9 @@ $(document).ready(function () {
   // Variable untuk menyimpan list cart
   let cart = [];
 
+  // Variable untuk menyimpan total qty pada cart
+  let jumlahQty = 0;
+
   // Fungsi untuk menampilkan product yang ada didalam cart
   function showCart() {
     $("#container-list").empty();
@@ -63,8 +66,8 @@ $(document).ready(function () {
     const PRICE = CARD.find("#price").text();
     const DATA_ID = CARD.data("id");
     let qty = 1;
-
-    console.log(cart);
+    jumlahQty++;
+    $("#totalCart").html(jumlahQty);
 
     // Mengecek apakah ID sudah ada dalam array cart
     const IS_ID_EXISTS = cart.some(
@@ -80,10 +83,7 @@ $(document).ready(function () {
         price_product_in_cart_perpcs: parseInt(PRICE), // Ubah price ke integer
         qty_product_in_cart: qty,
       };
-
       cart.push(dataCardProduct);
-
-      // console.log(cart);
 
       showCart();
     } else {
@@ -97,6 +97,7 @@ $(document).ready(function () {
       FIND_ID.qty_product_in_cart++;
 
       showCart();
+      hitung();
     }
   });
 
@@ -104,7 +105,12 @@ $(document).ready(function () {
   $("#container-list").on("click", ".trashBtn", function () {
     const EL = this.parentElement;
     const ID_IN_CART = EL.getAttribute("data-id-cart");
-    console.log(ID_IN_CART);
+    jumlahQty--;
+    $("#totalCart").html(jumlahQty);
+
+    hitung();
+
+    // console.log(ID_IN_CART);
 
     // Mencari ID dalam array cart
     const FIND_ID = cart.find((item) => item.id_product_in_cart === ID_IN_CART);
@@ -129,4 +135,7 @@ $(document).ready(function () {
 
     showCart();
   });
+
+  // Fungsi hitung
+  function hitung() {}
 });
