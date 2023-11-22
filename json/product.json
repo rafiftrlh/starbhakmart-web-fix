@@ -8,26 +8,110 @@
         },
         {
             "id": "m002",
-            "name": "Fried Chicken",
-            "image": "/public/friedChicken.jpg",
+            "name": "Ayam Goreng",
+            "image": "/public/ayamGoreng.jpg",
             "price": 25000
         },
         {
             "id": "m003",
-            "name": "French Fries",
-            "image": "/public/frenchFries.jpeg",
+            "name": "Kentang Goreng",
+            "image": "/public/kentangGoreng.jpeg",
             "price": 12000
         },
         {
             "id": "m004",
-            "name": "Fried Rice",
-            "image": "/public/friedRice.jpg",
+            "name": "Nasi Goreng",
+            "image": "/public/nasiGoreng.jpg",
             "price": 15000
         },
         {
             "id": "m005",
             "name": "Salad",
             "image": "/public/salad.jpg",
+            "price": 18000
+        },
+        {
+            "id": "m006",
+            "name": "Ikan Nila Bakar",
+            "image": "/public/ikanNilaBakar.jpg",
+            "price": 18000
+        },
+        {
+            "id": "m007",
+            "name": "Ayam Bakar",
+            "image": "/public/ayamBakarMadu.jpg",
+            "price": 18000
+        },
+        {
+            "id": "m008",
+            "name": "Sate Padang",
+            "image": "/public/satePadang.jpg",
+            "price": 18000
+        },
+        {
+            "id": "m008",
+            "name": "Sate Padang",
+            "image": "/public/satePadang.jpg",
+            "price": 18000
+        },
+        {
+            "id": "m008",
+            "name": "Sate Padang",
+            "image": "/public/satePadang.jpg",
+            "price": 18000
+        },
+        {
+            "id": "m008",
+            "name": "Sate Padang",
+            "image": "/public/satePadang.jpg",
+            "price": 18000
+        },
+        {
+            "id": "m008",
+            "name": "Sate Padang",
+            "image": "/public/satePadang.jpg",
+            "price": 18000
+        },
+        {
+            "id": "m008",
+            "name": "Sate Padang",
+            "image": "/public/satePadang.jpg",
+            "price": 18000
+        },
+        {
+            "id": "m008",
+            "name": "Sate Padang",
+            "image": "/public/satePadang.jpg",
+            "price": 18000
+        },
+        {
+            "id": "m008",
+            "name": "Sate Padang",
+            "image": "/public/satePadang.jpg",
+            "price": 18000
+        },
+        {
+            "id": "m008",
+            "name": "Sate Padang",
+            "image": "/public/satePadang.jpg",
+            "price": 18000
+        },
+        {
+            "id": "m008",
+            "name": "Sate Padang",
+            "image": "/public/satePadang.jpg",
+            "price": 18000
+        },
+        {
+            "id": "m008",
+            "name": "Sate Padang",
+            "image": "/public/satePadang.jpg",
+            "price": 18000
+        },
+        {
+            "id": "m009",
+            "name": "Pizza",
+            "image": "/public/pizza.jpg",
             "price": 18000
         }
     ]

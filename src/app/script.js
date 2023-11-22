@@ -12,11 +12,18 @@ $(document).ready(function () {
 
   // Template card menu
   function TemplateCard(id, img, name, price) {
-    return `<div class="CardBody hover:scale-105 transition-all" data-id="${id}">
-    <img src="${img}" alt="${name}" class="aspect-square rounded-sm">
+    return `<div class="CardBody group hover:scale-[1.02] transition-all" data-id="${id}">
+      <div class="relative bg-clip-border group-hover:-mt-6 transition-all mb-3 group-hover:shadow-lg rounded-lg overflow-hidden">
+        <img src="${img}" alt="${name}" class="aspect-square">
+      </div>
       <div class="">
-          <p id="name-product" class="font-semibold">${name}</p>
-          <p class="text-sky-400 font-semibold text-xl">Rp. <span id="price">${price}</span></p>
+          <p id="name-product" class="text-sm">${name}</p>
+      </div>
+      <div class="flex mt-2 items-center justify-between">
+        <p class="font-black text-base">Rp. <span id="price">${price}</span></p>
+        <button class="transition hover:bg-primary text-primary hover:shadow-md hover:text-white rounded-md px-3 py-1 flex ring-1 ring-primary">
+          <i class='bx bx-cart-add '></i>
+        </button>
       </div>
   </div>`;
   }
@@ -151,7 +158,6 @@ $(document).ready(function () {
   // Fungsi hitung
   function hitung() {
     // Hitung total jumlah harga yang ada didalam cart
-    let price = 0;
     let priceAll;
     if (cart.length < 1) {
       priceAll = 0;
