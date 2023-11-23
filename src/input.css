@@ -15,9 +15,18 @@
 
 @layer components {
   .CardBody {
-    @apply flex flex-col p-3 bg-gray-50 rounded-md shadow-md w-40 aspect-square cursor-pointer relative;
+    @apply flex flex-col p-3 bg-gray-50 rounded-md shadow-sm hover:shadow-lg w-40 aspect-square cursor-pointer relative;
   }
   .liCard {
     @apply py-1 px-1 flex justify-between gap-3 items-center;
+  }
+  .ContainerModals {
+    @apply absolute z-20 top-0 bottom-0 right-0 left-0 cursor-default backdrop-blur-md;
+  }
+  .btnModals {
+    @apply transition hover:bg-primary text-primary font-semibold hover:shadow-md hover:text-white rounded-md px-3 py-1 flex ring-1 ring-primary;
+  }
+  .btnCloseModals {
+    @apply transition ring-black hover:scale-105 cursor-pointer ring absolute right-0 rounded-full w-7 h-7 flex items-center justify-center;
   }
 }

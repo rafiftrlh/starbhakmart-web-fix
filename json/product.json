@@ -4,115 +4,73 @@
             "id": "m001",
             "name": "Burger",
             "image": "/public/burger.jpg",
-            "price": 20000
+            "price": 20000,
+            "category": "makanan",
+            "descripsi": "Nikmati keharmonisan rasa dalam setiap gigitan dengan burger istimewa kami. Daging pilihan yang diolah secara hati-hati menjadi patty lezat, disajikan antara roti yang lembut dan empuk. Setiap lapisannya menawarkan keunikan, dari kesegaran selada dan tomat hingga cita rasa istimewa saus khas kami."
         },
         {
             "id": "m002",
             "name": "Ayam Goreng",
             "image": "/public/ayamGoreng.jpg",
-            "price": 25000
+            "price": 25000,
+            "category": "makanan",
+            "descripsi": "Rasa gurih yang mendalam meresap hingga ke setiap serat, menciptakan sensasi sempurna antara kulit krispi dan daging ayam yang lembut."
         },
         {
             "id": "m003",
             "name": "Kentang Goreng",
             "image": "/public/kentangGoreng.jpeg",
-            "price": 12000
+            "price": 12000,
+            "category": "makanan",
+            "descripsi": "Luar kriuk dan lembut didalam"
         },
         {
             "id": "m004",
             "name": "Nasi Goreng",
             "image": "/public/nasiGoreng.jpg",
-            "price": 15000
+            "price": 15000,
+            "category": "makanan",
+            "descripsi": "Dibuat dengan cinta dan bumbu-bumbu pilihan, setiap suapan adalah perjalanan rasanya yang seru."
         },
         {
             "id": "m005",
-            "name": "Salad",
-            "image": "/public/salad.jpg",
-            "price": 18000
-        },
-        {
-            "id": "m006",
-            "name": "Ikan Nila Bakar",
-            "image": "/public/ikanNilaBakar.jpg",
-            "price": 18000
+            "name": "Roti",
+            "image": "/public/roti.jpg",
+            "price": 15000,
+            "category": "makanan",
+            "descripsi": "Roti tawar vegan ini pakai ube, ada rasa manis natural dengan warna yang gemas. Diolah tanpa telur, susu, dan butter. Kita menggunakan soy milk dan olive oil untuk adonan roti vegan. Jika pesan setelah jam 15.00, akan diproses keesokan harinya."
         },
         {
             "id": "m007",
             "name": "Ayam Bakar",
             "image": "/public/ayamBakarMadu.jpg",
-            "price": 18000
+            "price": 13000,
+            "category": "makanan",
+            "descripsi": "Daging ayam pilihan yang lembut dan smookey"
         },
         {
             "id": "m008",
             "name": "Sate Padang",
             "image": "/public/satePadang.jpg",
-            "price": 18000
-        },
-        {
-            "id": "m008",
-            "name": "Sate Padang",
-            "image": "/public/satePadang.jpg",
-            "price": 18000
-        },
-        {
-            "id": "m008",
-            "name": "Sate Padang",
-            "image": "/public/satePadang.jpg",
-            "price": 18000
-        },
-        {
-            "id": "m008",
-            "name": "Sate Padang",
-            "image": "/public/satePadang.jpg",
-            "price": 18000
-        },
-        {
-            "id": "m008",
-            "name": "Sate Padang",
-            "image": "/public/satePadang.jpg",
-            "price": 18000
-        },
-        {
-            "id": "m008",
-            "name": "Sate Padang",
-            "image": "/public/satePadang.jpg",
-            "price": 18000
-        },
-        {
-            "id": "m008",
-            "name": "Sate Padang",
-            "image": "/public/satePadang.jpg",
-            "price": 18000
-        },
-        {
-            "id": "m008",
-            "name": "Sate Padang",
-            "image": "/public/satePadang.jpg",
-            "price": 18000
-        },
-        {
-            "id": "m008",
-            "name": "Sate Padang",
-            "image": "/public/satePadang.jpg",
-            "price": 18000
-        },
-        {
-            "id": "m008",
-            "name": "Sate Padang",
-            "image": "/public/satePadang.jpg",
-            "price": 18000
-        },
-        {
-            "id": "m008",
-            "name": "Sate Padang",
-            "image": "/public/satePadang.jpg",
-            "price": 18000
+            "price": 15000,
+            "category": "makanan",
+            "descripsi": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid sint totam maxime maiores molestiae qui nulla fugit rerum modi iste. Unde saepe consequuntur maxime iusto?"
         },
         {
             "id": "m009",
-            "name": "Pizza",
-            "image": "/public/pizza.jpg",
-            "price": 18000
+            "name": "Donat",
+            "image": "/public/donat.jpg",
+            "price": 10000,
+            "category": "makanan",
+            "descripsi": "Dibuat dengan cinta, donat ini memiliki tekstur yang lembut seperti awan dengan lapisan gula halus yang membuat setiap gigitan merasa seperti pelukan manis."
+        },
+        {
+            "id": "m010",
+            "name": "Seblak",
+            "image": "/public/seblak.jpg",
+            "price": 10000,
+            "category": "makanan",
+            "descripsi": "Dibuat dengan bumbu khas dan bahan-bahan segar, setiap suapan adalah perjalanan rasa yang menggugah selera."
         }
     ]
 }

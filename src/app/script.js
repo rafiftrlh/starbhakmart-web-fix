@@ -13,19 +13,22 @@ $(document).ready(function () {
   // Template card menu
   function TemplateCard(id, img, name, price) {
     return `<div class="CardBody group hover:scale-[1.02] transition-all" data-id="${id}">
-      <div class="relative bg-clip-border group-hover:-mt-6 transition-all mb-3 group-hover:shadow-lg rounded-lg overflow-hidden">
-        <img src="${img}" alt="${name}" class="aspect-square">
-      </div>
-      <div class="">
-          <p id="name-product" class="text-sm">${name}</p>
-      </div>
-      <div class="flex mt-2 items-center justify-between">
-        <p class="font-black text-base">Rp. <span id="price">${price}</span></p>
-        <button class="transition hover:bg-primary text-primary hover:shadow-md hover:text-white rounded-md px-3 py-1 flex ring-1 ring-primary">
-          <i class='bx bx-cart-add '></i>
-        </button>
-      </div>
-  </div>`;
+              <div class="relative bg-clip-border group-hover:-mt-6 transition-all mb-3 group-hover:shadow-lg rounded-lg overflow-hidden">
+                <img src="${img}" alt="${name}" class="aspect-square">
+              </div>
+              <div class="">
+                  <p id="name-product" class="text-sm">${name}</p>
+                  <p class="font-black text-base">Rp. <span id="price">${price}</span></p>
+              </div>
+              <div class="flex mt-2 items-center justify-between">
+                <button class="transition hover:bg-primary text-primary hover:shadow-md hover:text-white rounded-md px-3 py-1 flex ring-1 ring-primary btnDetail text-xs">
+                  Read More
+                </button>
+                <button class="transition hover:bg-primary text-primary hover:shadow-md hover:text-white rounded-md px-3 py-1 flex ring-1 ring-primary btnAddCart">
+                  <i class='bx bx-cart-add'></i>
+                </button>
+              </div>
+            </div>`;
   }
 
   // Template cart
@@ -42,6 +45,35 @@ $(document).ready(function () {
               </div>
               <i class='bx bx-trash bx-sm transition cursor-pointer bg-black/5 hover:bg-black/10 rounded-full p-1 trashBtn'></i>
             </li>`;
+  }
+  // Template modals
+  function Modals(id) {
+    return `<div class="ContainerModals" id="ContainerModals">
+              <div
+                  class="absolute flex gap-3 shadow-lg top-1/2 left-1/2 -translate-x-1/2 w-[60%] h-[60%] -translate-y-1/2 bg-gray-100 rounded-xl p-5 aspect-video" data-id=${id}>
+                  <img src="${id.image}" alt="" class="aspect-square rounded-lg shadow-lg">
+                  <div class="text-left flex flex-col divide-y-2 justify-between">
+                      <div class="relative">
+                          <div class="btnCloseModals">
+                          <i class='bx bx-sm bx-x'></i>
+                          </div>
+                          <p class="font-black text-2xl pb-3" id="#name-product">${id.name}</p>
+                          <p class="transition-all pl-3 border-l-2 hover:border-l-8 border-l-gray-400">Rp <span id="price">${id.price}</span
+                          </p>
+                          <p class=" py-3 tracking-tight">${id.descripsi}
+                          </p>
+                      </div>
+                      <div class="flex py-3 gap-5 items-center">
+                          <button class="btnModals btnAddCart">
+                              Buy Now
+                          </button>
+                          <button class="btnModals btnAddCartModals">
+                              <i class='bx bx-sm bx-cart-add'></i>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+            </div>`;
   }
 
   // Variable untuk menyimpan list cart
@@ -69,9 +101,78 @@ $(document).ready(function () {
     });
   }
 
+  // Menampilkan modals product
+  $("#menu").on("click", ".btnDetail", function () {
+    const CARD = $(this.parentElement.parentElement);
+    const DATA_ID = CARD.data("id");
+    console.log(DATA_ID);
+
+    $.getJSON("/json/product.json", function (data) {
+      let menu = data.menu;
+
+      const FIND_ID = menu.find((item) => item.id === DATA_ID);
+      console.log(FIND_ID);
+
+      $("#menu").append(Modals(FIND_ID));
+
+      $(".btnCloseModals").click(function (e) {
+        e.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+      });
+      // Menambahkan product kedalam cart ketika btnAdd di modals diklik
+      $(".btnAddCartModals").on("click", function () {
+        const NAME = CARD.find("#name-product").text();
+        const PRICE = CARD.find("#price").text();
+        const DATA_ID = CARD.data("id");
+        let qty = 1;
+
+        // Tambah jumlah tax
+        tax < 10 ? tax++ : tax;
+        $("#tax").html(`${tax}%`);
+
+        // Update jumlah semua qty
+        jumlahQty++;
+        $("#totalCart").html(jumlahQty);
+
+        // Mengecek apakah ID sudah ada dalam array cart
+        const IS_ID_EXISTS = cart.some(
+          (item) => item.id_product_in_cart === DATA_ID
+        );
+
+        if (!IS_ID_EXISTS) {
+          // Jika ID belum ada, tambahkan ke dalam array
+          let dataCardProduct = {
+            id_product_in_cart: `${DATA_ID}`,
+            name_product_in_cart: `${NAME}`,
+            price_product_in_cart: parseInt(PRICE), // Ubah price ke integer
+            price_product_in_cart_perpcs: parseInt(PRICE), // Ubah price ke integer
+            qty_product_in_cart: qty,
+          };
+          cart.push(dataCardProduct);
+
+          showCart();
+        } else {
+          // Jika ID sudah ada, lakukan penambahan ke objek dengan id tersebut
+          // Mencari id dalam array
+          const FIND_ID = cart.find(
+            (item) => item.id_product_in_cart === DATA_ID
+          );
+
+          // Update total price
+          FIND_ID.price_product_in_cart += parseInt(PRICE);
+          // Update qty
+          FIND_ID.qty_product_in_cart++;
+
+          showCart();
+        }
+        hitung();
+      });
+    });
+  });
+
   // Menambahkan product kedalam cart ketika card menu diklik
-  $("#menu").on("click", ".CardBody", function () {
-    const CARD = $(this);
+  $("#menu").on("click", ".btnAddCart", function () {
+    const CARD = $(this.parentElement.parentElement);
+    console.log(CARD);
     const NAME = CARD.find("#name-product").text();
     const PRICE = CARD.find("#price").text();
     const DATA_ID = CARD.data("id");
