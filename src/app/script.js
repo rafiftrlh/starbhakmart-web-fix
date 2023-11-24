@@ -64,7 +64,7 @@ $(document).ready(function () {
                           </p>
                       </div>
                       <div class="flex py-3 gap-5 items-center">
-                          <button class="btnModals btnAddCart">
+                          <button class="btnModals btnBuyNow">
                               Buy Now
                           </button>
                           <button class="btnModals btnAddCartModals">
@@ -76,6 +76,51 @@ $(document).ready(function () {
             </div>`;
   }
 
+  // Tempplate eksport product yang ada di cart
+  function exportBill() {
+    return (
+      `  Starbhak Mart
+  SMK Taruna Bhakti Depok
+  Telp. 0808-0808-0808
+  ----------------------------------------------------------
+  Nama   --   qty   --   Harga   --   Total
+  ----------------------------------------------------------
+  ` +
+      cart
+        .map(
+          (item) =>
+            `${item.name_product_in_cart}   --   ${item.qty_product_in_cart}   --   ${item.price_product_in_cart_perpcs}   --   ${item.price_product_in_cart}`
+        )
+        .join(`\n  `) +
+      `
+  ----------------------------------------------------------
+  Total ${jumlahQty} item(s).  :  Rp. ${priceAll}
+  Pajak(${tax})                :   Rp. ${taxRp}
+  ______________________________________________________ +
+  Total Semua      :   Rp. ${totalAmount}
+  ----------------------------------------------------------
+  Terimakasih Atas Pesanan Anda`
+    );
+  }
+
+  // Template BuyNow
+  function BuyNow(id, tax, total) {
+    return `Starbhak Mart
+  SMK Taruna Bhakti Depok
+  Telp. 0808-0808-0808
+  ----------------------------------------------------------
+  Nama   --   qty   --   Harga   --   Total
+  ----------------------------------------------------------
+  ${id.name}  --  1  --  ${id.price}  --  ${id.price}
+  ----------------------------------------------------------
+  Total 1 item(s).  :  Rp. ${id.price}
+  Pajak(1%)                :   Rp. ${tax}
+  ______________________________________________________ +
+  Total Semua      :   Rp. ${total}
+  ----------------------------------------------------------
+  Terimakasih Atas Pesanan Anda`;
+  }
+
   // Variable untuk menyimpan list cart
   let cart = [];
 
@@ -85,6 +130,7 @@ $(document).ready(function () {
   // Variable tax
   let tax = 0;
   var taxRp = 0;
+  var taxPersen = 0;
 
   // Variable Total
   var priceAll = 0;
@@ -119,11 +165,16 @@ $(document).ready(function () {
       const FIND_ID = menu.find((item) => item.id === DATA_ID);
       console.log(FIND_ID);
 
-      // Menampilkan modals
-      $("#menu").append(Modals(FIND_ID));
+      // Menampilkan modals dengan animasi
+      const modals = $(Modals(FIND_ID)).hide();
+      $("#menu").append(modals);
+      modals.fadeIn("fast");
 
       $(".btnCloseModals").click(function (e) {
-        e.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+        // Menghilangkan modals dengan animasi sebelum dihapus dari DOM
+        modals.fadeOut("fast", function () {
+          $(this).remove();
+        });
       });
 
       // Menambahkan product kedalam cart ketika btnAdd di modals diklik
@@ -135,7 +186,6 @@ $(document).ready(function () {
 
         // Tambah jumlah tax
         tax < 10 ? tax++ : tax;
-        $("#tax").html(`${tax}%`);
 
         // Update jumlah semua qty
         jumlahQty++;
@@ -156,8 +206,6 @@ $(document).ready(function () {
             qty_product_in_cart: qty,
           };
           cart.push(dataCardProduct);
-
-          showCart();
         } else {
           // Jika ID sudah ada, lakukan penambahan ke objek dengan id tersebut
           // Mencari id dalam array
@@ -169,10 +217,22 @@ $(document).ready(function () {
           FIND_ID.price_product_in_cart += parseInt(PRICE);
           // Update qty
           FIND_ID.qty_product_in_cart++;
-
-          showCart();
         }
+        showCart();
         hitung();
+      });
+
+      $(".btnBuyNow").click(function () {
+        // Ubah tax menjadi persen
+        let taxPersenNow = 1 / 100;
+
+        // Tentukan pajak
+        let taxRpNow = Math.round(FIND_ID.price * taxPersenNow);
+
+        // Total
+        let totalNow = FIND_ID.price + taxRpNow;
+
+        alert(BuyNow(FIND_ID, taxRpNow, totalNow));
       });
     });
   });
@@ -235,11 +295,9 @@ $(document).ready(function () {
 
     // Kurangi tax
     jumlahQty >= 11 ? tax : tax--;
-    $("#tax").html(`${tax}%`);
 
     // Update jumlah semua qty
     jumlahQty--;
-    $("#totalCart").html(jumlahQty);
 
     // Mencari ID dalam array cart
     const FIND_ID = cart.find((item) => item.id_product_in_cart === ID_IN_CART);
@@ -278,10 +336,12 @@ $(document).ready(function () {
     }
 
     // Update total
+    $("#totalCart").html(jumlahQty);
     $("#total").html(`Rp. ${priceAll}`);
 
     // Ubah tax menjadi persen
-    let taxPersen = tax / 100;
+    taxPersen = tax / 100;
+    $("#tax").html(`${tax}%`);
 
     // Tentukan pajak
     taxRp = Math.round(priceAll * taxPersen);
@@ -294,30 +354,10 @@ $(document).ready(function () {
 
   $(".btnBuyCart").click(function () {
     alert(exportBill());
+    cart.length = 0;
+    jumlahQty = 0;
+    tax = 0;
+    showCart();
+    hitung();
   });
-
-  // Tempplate eksport
-  function exportBill() {
-    return (
-      `Starbhak Mart
-SMK Taruna Bhakti Depok
-Telp. 0808-0808-0808
-------------------------------------------------------
-Nama   --   qty   --   Harga   --   Total
-------------------------------------------------------
-` +
-      cart.map(
-        (item) =>
-          `${item.name_product_in_cart}   --   ${item.qty_product_in_cart}   --   ${item.price_product_in_cart_perpcs}   --   ${item.price_product_in_cart}\n`
-      ) +
-      `
-------------------------------------------------------
-Total ${jumlahQty} item(s).  :  Rp. ${priceAll}
-Tax(${tax})                :   Rp. ${taxRp}
-______________________________________________________ +
-Total Semua      :   Rp. ${totalAmount}
-------------------------------------------------------
-Terimakasih Atas Pesanan Anda`
-    );
-  }
 });
