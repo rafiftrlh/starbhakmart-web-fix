@@ -29,4 +29,7 @@
   .btnCloseModals {
     @apply transition ring-black hover:scale-105 cursor-pointer ring absolute right-0 rounded-full w-7 h-7 flex items-center justify-center;
   }
+  .btnBuyCart {
+    @apply transition mx-auto hover:bg-primary text-primary hover:shadow-md hover:text-white rounded-md px-10 py-1 flex ring-1 ring-primary text-xs;
+  }
 }

@@ -84,6 +84,11 @@ $(document).ready(function () {
 
   // Variable tax
   let tax = 0;
+  var taxRp = 0;
+
+  // Variable Total
+  var priceAll = 0;
+  var totalAmount = 0;
 
   // Fungsi untuk menampilkan product yang ada didalam cart
   function showCart() {
@@ -110,14 +115,17 @@ $(document).ready(function () {
     $.getJSON("/json/product.json", function (data) {
       let menu = data.menu;
 
+      // Mencari data json dengan id
       const FIND_ID = menu.find((item) => item.id === DATA_ID);
       console.log(FIND_ID);
 
+      // Menampilkan modals
       $("#menu").append(Modals(FIND_ID));
 
       $(".btnCloseModals").click(function (e) {
         e.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
       });
+
       // Menambahkan product kedalam cart ketika btnAdd di modals diklik
       $(".btnAddCartModals").on("click", function () {
         const NAME = CARD.find("#name-product").text();
@@ -177,6 +185,8 @@ $(document).ready(function () {
     const PRICE = CARD.find("#price").text();
     const DATA_ID = CARD.data("id");
     let qty = 1;
+
+    console.log(totalAmount);
 
     // Tambah jumlah tax
     tax < 10 ? tax++ : tax;
@@ -259,7 +269,6 @@ $(document).ready(function () {
   // Fungsi hitung
   function hitung() {
     // Hitung total jumlah harga yang ada didalam cart
-    let priceAll;
     if (cart.length < 1) {
       priceAll = 0;
     } else {
@@ -268,17 +277,47 @@ $(document).ready(function () {
         .reduce((total, harga) => total + harga);
     }
 
+    // Update total
     $("#total").html(`Rp. ${priceAll}`);
 
     // Ubah tax menjadi persen
     let taxPersen = tax / 100;
 
     // Tentukan pajak
-    let taxRp = Math.round(priceAll * taxPersen);
+    taxRp = Math.round(priceAll * taxPersen);
     $("#totalTax").html(`Rp. ${taxRp}`);
 
     // Total amount
-    let totalAmount = priceAll + taxRp;
+    totalAmount = priceAll + taxRp;
     $("#totalAmount").html(`Rp. ${totalAmount}`);
+  }
+
+  $(".btnBuyCart").click(function () {
+    alert(exportBill());
+  });
+
+  // Tempplate eksport
+  function exportBill() {
+    return (
+      `Starbhak Mart
+SMK Taruna Bhakti Depok
+Telp. 0808-0808-0808
+------------------------------------------------------
+Nama   --   qty   --   Harga   --   Total
+------------------------------------------------------
+` +
+      cart.map(
+        (item) =>
+          `${item.name_product_in_cart}   --   ${item.qty_product_in_cart}   --   ${item.price_product_in_cart_perpcs}   --   ${item.price_product_in_cart}\n`
+      ) +
+      `
+------------------------------------------------------
+Total ${jumlahQty} item(s).  :  Rp. ${priceAll}
+Tax(${tax})                :   Rp. ${taxRp}
+______________________________________________________ +
+Total Semua      :   Rp. ${totalAmount}
+------------------------------------------------------
+Terimakasih Atas Pesanan Anda`
+    );
   }
 });
