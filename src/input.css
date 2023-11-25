@@ -24,12 +24,15 @@
     @apply transition-all absolute z-20 top-0 bottom-0 right-0 left-0 cursor-default backdrop-blur-md;
   }
   .btnModals {
-    @apply transition hover:bg-primary text-primary font-semibold hover:shadow-md hover:text-white rounded-md px-3 py-1 flex ring-1 ring-primary;
+    @apply transition font-semibold hover:shadow-md hover:text-white rounded-md px-3 py-1 flex ring-1;
   }
   .btnCloseModals {
     @apply transition ring-black hover:scale-105 cursor-pointer ring absolute right-0 rounded-full w-7 h-7 flex items-center justify-center;
   }
   .btnBuyCart {
-    @apply transition mx-auto hover:bg-primary text-primary hover:shadow-md hover:text-white rounded-md px-10 py-1 flex ring-1 ring-primary text-xs;
+    @apply transition mx-auto hover:bg-accent text-accent hover:shadow-md hover:text-white rounded-md px-10 py-1 flex ring-1 ring-accent text-xs;
+  }
+  .Kategori {
+    @apply transition cursor-pointer font-semibold tracking-wide text-gray-500;
   }
 }

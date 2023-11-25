@@ -4,8 +4,9 @@
             "id": "m001",
             "name": "Burger",
             "image": "/public/burger.jpg",
-            "price": 20000,
+            "price": 25000,
             "category": "makanan",
+            "all": "all menu",
             "descripsi": "Nikmati keharmonisan rasa dalam setiap gigitan dengan burger istimewa kami. Daging pilihan yang diolah secara hati-hati menjadi patty lezat, disajikan antara roti yang lembut dan empuk. Setiap lapisannya menawarkan keunikan, dari kesegaran selada dan tomat hingga cita rasa istimewa saus khas kami."
         },
         {
@@ -13,7 +14,8 @@
             "name": "Ayam Goreng",
             "image": "/public/ayamGoreng.jpg",
             "price": 25000,
-            "category": "makanan",
+            "category": "ayam",
+            "all": "all menu",
             "descripsi": "Rasa gurih yang mendalam meresap hingga ke setiap serat, menciptakan sensasi sempurna antara kulit krispi dan daging ayam yang lembut."
         },
         {
@@ -21,7 +23,8 @@
             "name": "Kentang Goreng",
             "image": "/public/kentangGoreng.jpeg",
             "price": 12000,
-            "category": "makanan",
+            "category": "dll",
+            "all": "all menu",
             "descripsi": "Luar kriuk dan lembut didalam"
         },
         {
@@ -29,23 +32,35 @@
             "name": "Nasi Goreng",
             "image": "/public/nasiGoreng.jpg",
             "price": 15000,
-            "category": "makanan",
+            "category": "nasi",
+            "all": "all menu",
             "descripsi": "Dibuat dengan cinta dan bumbu-bumbu pilihan, setiap suapan adalah perjalanan rasanya yang seru."
         },
         {
             "id": "m005",
             "name": "Roti",
             "image": "/public/roti.jpg",
-            "price": 15000,
-            "category": "makanan",
+            "price": 10,
+            "category": "dll",
+            "all": "all menu",
             "descripsi": "Roti tawar vegan ini pakai ube, ada rasa manis natural dengan warna yang gemas. Diolah tanpa telur, susu, dan butter. Kita menggunakan soy milk dan olive oil untuk adonan roti vegan. Jika pesan setelah jam 15.00, akan diproses keesokan harinya."
+        },
+        {
+            "id": "m006",
+            "name": "Salad",
+            "image": "/public/salad.jpg",
+            "price": 15000,
+            "category": "dll",
+            "all": "all menu",
+            "descripsi": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid sint totam maxime maiores molestiae qui nulla fugit rerum modi iste. Unde saepe consequuntur maxime iusto?"
         },
         {
             "id": "m007",
             "name": "Ayam Bakar",
             "image": "/public/ayamBakarMadu.jpg",
             "price": 13000,
-            "category": "makanan",
+            "category": "ayam",
+            "all": "all menu",
             "descripsi": "Daging ayam pilihan yang lembut dan smookey"
         },
         {
@@ -53,7 +68,8 @@
             "name": "Sate Padang",
             "image": "/public/satePadang.jpg",
             "price": 15000,
-            "category": "makanan",
+            "category": "dll",
+            "all": "all menu",
             "descripsi": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid sint totam maxime maiores molestiae qui nulla fugit rerum modi iste. Unde saepe consequuntur maxime iusto?"
         },
         {
@@ -61,7 +77,8 @@
             "name": "Donat",
             "image": "/public/donat.jpg",
             "price": 10000,
-            "category": "makanan",
+            "category": "dll",
+            "all": "all menu",
             "descripsi": "Dibuat dengan cinta, donat ini memiliki tekstur yang lembut seperti awan dengan lapisan gula halus yang membuat setiap gigitan merasa seperti pelukan manis."
         },
         {
@@ -69,8 +86,162 @@
             "name": "Seblak",
             "image": "/public/seblak.jpg",
             "price": 10000,
-            "category": "makanan",
+            "category": "dll",
+            "all": "all menu",
             "descripsi": "Dibuat dengan bumbu khas dan bahan-bahan segar, setiap suapan adalah perjalanan rasa yang menggugah selera."
+        },
+        {
+            "id": "m011",
+            "name": "Meat Lover",
+            "image": "/public/meat-lover.jpg",
+            "price": 49500,
+            "category": "pizza",
+            "all": "all menu",
+            "descripsi": "Irisan sosis sapi, daging sapi cincang, burger sapi, sosis ayam."
+        },
+        {
+            "id": "m012",
+            "name": "Super Supreme",
+            "image": "/public/supreme.jpg",
+            "price": 49500,
+            "category": "pizza",
+            "all": "all menu",
+            "descripsi": "Daging ayam dan sapi asap, daging sapi cincang, burger sapi, jamur, paprika merah dan paprika hijau."
+        },
+        {
+            "id": "m013",
+            "name": "Tuna Melt",
+            "image": "/public/tuna-melt.jpg",
+            "price": 49500,
+            "category": "pizza",
+            "all": "all menu",
+            "descripsi": "Irisan daging ikan tuna, butiran jagung, saus mayonnaise."
+        },
+        {
+            "id": "m014",
+            "name": "American Favourite",
+            "image": "/public/american-favourite.jpg",
+            "price": 49500,
+            "category": "pizza",
+            "all": "all menu",
+            "descripsi": "Pepperoni sapi, daging sapi cincang, jamur."
+        },
+        {
+            "id": "m015",
+            "name": "Beef Spaghetti",
+            "image": "/public/beef-spaghetti.jpg",
+            "price": 43000,
+            "category": "pasta",
+            "all": "all menu",
+            "descripsi": "Pepperoni sapi, daging sapi cincang, jamur."
+        },
+        {
+            "id": "m016",
+            "name": "Beef Lasagna",
+            "image": "/public/beef-lasagna.jpg",
+            "price": 48000,
+            "category": "pasta",
+            "all": "all menu",
+            "descripsi": "Dipanggang, daging sapi cincang. krim putih lembut di tiap lapisan."
+        },
+        {
+            "id": "m017",
+            "name": "Creamy Beef Fettuccine",
+            "image": "/public/creamy-beef-fettuccine.jpg",
+            "price": 43000,
+            "category": "pasta",
+            "all": "all menu",
+            "descripsi": "Daging sapi asap dan jamur, ditumis dengan saus krim lembut."
+        },
+        {
+            "id": "m018",
+            "name": "Meatballs Beef Mushroom",
+            "image": "/public/meatballs-beef-mushroom.jpg",
+            "price": 40000,
+            "category": "nasi",
+            "all": "all menu",
+            "descripsi": "Bola daging sapi dengan saus daging sapi cincang dan jamur."
+        },
+        {
+            "id": "m019",
+            "name": "Black Pepper Chicken",
+            "image": "/public/black-pepper-chicken.jpg",
+            "price": 40000,
+            "category": "nasi",
+            "all": "all menu",
+            "descripsi": "Ayam dengan saus lada hitam."
+        },
+        {
+            "id": "m020",
+            "name": "Oriental Chicken",
+            "image": "/public/oriental-chicken.jpg",
+            "price": 40000,
+            "category": "nasi",
+            "all": "all menu",
+            "descripsi": "Daging ayam berpadu dengan saus oriental."
+        },
+        {
+            "id": "m021",
+            "name": "Choco Mint",
+            "image": "/public/choco-mint.jpg",
+            "price": 24000,
+            "category": "minuman",
+            "all": "all menu",
+            "descripsi": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid sint totam maxime maiores molestiae qui nulla fugit rerum modi iste. Unde saepe consequuntur maxime iusto?"
+        },
+        {
+            "id": "m022",
+            "name": "Toffee Coffee",
+            "image": "/public/toffee-coffee.jpg",
+            "price": 24000,
+            "category": "minuman",
+            "all": "all menu",
+            "descripsi": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid sint totam maxime maiores molestiae qui nulla fugit rerum modi iste. Unde saepe consequuntur maxime iusto?"
+        },
+        {
+            "id": "m023",
+            "name": "Green Tea Shake",
+            "image": "/public/green-tea-shake.jpg",
+            "price": 24000,
+            "category": "minuman",
+            "all": "all menu",
+            "descripsi": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid sint totam maxime maiores molestiae qui nulla fugit rerum modi iste. Unde saepe consequuntur maxime iusto?"
+        },
+        {
+            "id": "m024",
+            "name": "Strawberry Milkshake",
+            "image": "/public/strawberry-milkshake.jpg",
+            "price": 24000,
+            "category": "minuman",
+            "all": "all menu",
+            "descripsi": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid sint totam maxime maiores molestiae qui nulla fugit rerum modi iste. Unde saepe consequuntur maxime iusto?"
+        },
+        {
+            "id": "m025",
+            "name": "Chocolate Milkshake",
+            "image": "/public/chocolate-milkshake.jpg",
+            "price": 24000,
+            "category": "minuman",
+            "all": "all menu",
+            "descripsi": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid sint totam maxime maiores molestiae qui nulla fugit rerum modi iste. Unde saepe consequuntur maxime iusto?"
+        },
+        {
+            "id": "m026",
+            "name": "Nasi Padang",
+            "image": "/public/nasiPadang.jpg",
+            "price": 10000,
+            "category": "nasi",
+            "all": "all menu",
+            "descripsi": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid sint totam maxime maiores molestiae qui nulla fugit rerum modi iste. Unde saepe consequuntur maxime iusto?"
+        },
+        {
+            "id": "m027",
+            "name": "Nila Bakar",
+            "image": "/public/nilaBakar.jpg",
+            "price": 20000,
+            "category": "dll",
+            "all": "all menu",
+            "descripsi": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid sint totam maxime maiores molestiae qui nulla fugit rerum modi iste. Unde saepe consequuntur maxime iusto?"
         }
     ]
 }

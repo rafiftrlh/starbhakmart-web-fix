@@ -1,27 +1,58 @@
 $(document).ready(function () {
   // Menampilkan semua data yang ada di json kedalam html
-  $.getJSON("/json/product.json", function (data) {
-    let menu = data.menu;
+  function semuaMenu() {
+    $.getJSON("/json/product.json", function (data) {
+      let menu = data.menu;
 
-    $.each(menu, function (i, data) {
-      $("#menu").append(
-        TemplateCard(data.id, data.image, data.name, data.price)
-      );
+      $.each(menu, function (i, data) {
+        $("#menu").append(TemplateCard(data));
+      });
+    });
+  }
+
+  semuaMenu();
+
+  $(".Kategori").click(function () {
+    // Mengubah active
+    $(".Kategori").removeClass("text-accent");
+    $(this).addClass("text-accent");
+
+    let kategori = $(this).text();
+
+    // if (data.category == "All Menu") {
+    //   semuaMenu();
+    //   return;
+    // }
+
+    // Menampilkan sesuai kategori
+    $.getJSON("/json/product.json", function (data) {
+      let menu = data.menu;
+      let content = "";
+
+      $.each(menu, function (i, data) {
+        if (data.category == kategori.toLowerCase()) {
+          content += TemplateCard(data);
+          $("#menu").html(content);
+        } else if (data.all == kategori.toLowerCase()) {
+          content += TemplateCard(data);
+          $("#menu").html(content);
+        }
+      });
     });
   });
 
   // Template card menu
-  function TemplateCard(id, img, name, price) {
-    return `<div class="CardBody group hover:scale-[1.02] transition-all" data-id="${id}">
+  function TemplateCard(data) {
+    return `<div class="CardBody group hover:scale-[1.02] transition-all" data-id="${data.id}">
               <div class="relative bg-clip-border group-hover:-mt-6 transition-all mb-3 group-hover:shadow-lg rounded-lg overflow-hidden">
-                <img src="${img}" alt="${name}" class="aspect-square">
+                <img src="${data.image}" alt="${data.name}" class="aspect-square">
               </div>
               <div class="">
-                  <p id="name-product" class="text-sm">${name}</p>
-                  <p class="font-black text-base">Rp. <span id="price">${price}</span></p>
+                  <p id="name-product" class="text-sm">${data.name}</p>
+                  <p class="font-black text-base">Rp. <span id="price">${data.price}</span></p>
               </div>
               <div class="flex mt-2 items-center justify-between">
-                <button class="transition hover:bg-primary text-primary hover:shadow-md hover:text-white rounded-md px-3 py-1 flex ring-1 ring-primary btnDetail text-xs">
+                <button class="transition hover:bg-accent text-accent hover:shadow-md hover:text-white rounded-md px-3 py-1 flex ring-1 ring-accent btnDetail text-xs">
                   Read More
                 </button>
                 <button class="transition hover:bg-primary text-primary hover:shadow-md hover:text-white rounded-md px-3 py-1 flex ring-1 ring-primary btnAddCart">
@@ -64,10 +95,10 @@ $(document).ready(function () {
                           </p>
                       </div>
                       <div class="flex py-3 gap-5 items-center">
-                          <button class="btnModals btnBuyNow">
+                          <button class="btnModals hover:bg-accent text-accent ring-accent btnBuyNow">
                               Buy Now
                           </button>
-                          <button class="btnModals btnAddCartModals">
+                          <button class="btnModals hover:bg-primary text-primary ring-primary btnAddCartModals">
                               <i class='bx bx-sm bx-cart-add'></i>
                           </button>
                       </div>
@@ -93,10 +124,10 @@ $(document).ready(function () {
         )
         .join(`\n  `) +
       `
-  ----------------------------------------------------------
+  ----------------------------------------------------------------------------
   Total ${jumlahQty} item(s).  :  Rp. ${priceAll}
   Pajak(${tax})                :   Rp. ${taxRp}
-  ______________________________________________________ +
+  _________________________________________________________________________ +
   Total Semua      :   Rp. ${totalAmount}
   ----------------------------------------------------------
   Terimakasih Atas Pesanan Anda`
@@ -108,16 +139,16 @@ $(document).ready(function () {
     return `Starbhak Mart
   SMK Taruna Bhakti Depok
   Telp. 0808-0808-0808
-  ----------------------------------------------------------
+  ----------------------------------------------------------------------------
   Nama   --   qty   --   Harga   --   Total
-  ----------------------------------------------------------
+  ----------------------------------------------------------------------------
   ${id.name}  --  1  --  ${id.price}  --  ${id.price}
-  ----------------------------------------------------------
+  ----------------------------------------------------------------------------
   Total 1 item(s).  :  Rp. ${id.price}
   Pajak(1%)                :   Rp. ${tax}
-  ______________________________________________________ +
+  _________________________________________________________________________ +
   Total Semua      :   Rp. ${total}
-  ----------------------------------------------------------
+  ----------------------------------------------------------------------------
   Terimakasih Atas Pesanan Anda`;
   }
 
