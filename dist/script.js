@@ -1,7 +1,7 @@
 $(document).ready(function () {
   // Menampilkan semua data yang ada di json kedalam html
   function semuaMenu() {
-    $.getJSON("/json/product.json", function (data) {
+    $.getJSON("json/product.json", function (data) {
       let menu = data.menu;
 
       $.each(menu, function (i, data) {
@@ -25,7 +25,7 @@ $(document).ready(function () {
     // }
 
     // Menampilkan sesuai kategori
-    $.getJSON("/json/product.json", function (data) {
+    $.getJSON("json/product.json", function (data) {
       let menu = data.menu;
       let content = "";
 
@@ -189,7 +189,7 @@ $(document).ready(function () {
     const DATA_ID = CARD.data("id");
     console.log(DATA_ID);
 
-    $.getJSON("/json/product.json", function (data) {
+    $.getJSON("json/product.json", function (data) {
       let menu = data.menu;
 
       // Mencari data json dengan id
@@ -268,7 +268,7 @@ $(document).ready(function () {
     });
   });
 
-  // Menambahkan product kedalam cart ketika card menu diklik
+  // Menambahkan product kedalam cart ketika btnAddCart diklik
   $("#menu").on("click", ".btnAddCart", function () {
     const CARD = $(this.parentElement.parentElement);
     console.log(CARD);
