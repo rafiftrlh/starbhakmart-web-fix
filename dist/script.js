@@ -392,23 +392,22 @@ $(document).ready(function () {
   const inpSearch = $("#inpSearch");
 
   inpSearch.on("input", function () {
-    const valSearch = $("#inpSearch").val();
+    const valSearch = $("#inpSearch").val().toLowerCase(); // Consider case-insensitive search
     console.log(valSearch);
 
     // Menampilkan sesuai search
-    $.getJSON("/json/product.json", function (data) {
+    $.getJSON("json/product.json", function (data) {
       let menu = data.menu;
       let content = "";
 
-      $.each(menu, function (i, data) {
-        if (data.name == valSearch) {
-          content += TemplateCard(data);
-          $("#menu").html(content);
-        } else if (data.name == valSearch) {
-          content += TemplateCard(data);
-          $("#menu").html(content);
+      $.each(menu, function (i, product) {
+        const productName = product.name.toLowerCase();
+        if (productName.includes(valSearch)) {
+          content += TemplateCard(product);
         }
       });
+
+      $("#menu").html(content);
     });
   });
 });

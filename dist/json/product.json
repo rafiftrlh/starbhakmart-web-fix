@@ -3,7 +3,7 @@
         {
             "id": "m001",
             "name": "Burger",
-            "image": "/public/burger.jpg",
+            "image": "/dist/public/burger.jpg",
             "price": 25000,
             "category": "makanan",
             "all": "all menu",
@@ -12,7 +12,7 @@
         {
             "id": "m002",
             "name": "Ayam Goreng",
-            "image": "/public/ayamGoreng.jpg",
+            "image": "/dist/public/ayamGoreng.jpg",
             "price": 25000,
             "category": "ayam",
             "all": "all menu",
@@ -21,7 +21,7 @@
         {
             "id": "m003",
             "name": "Kentang Goreng",
-            "image": "/public/kentangGoreng.jpeg",
+            "image": "/dist/public/kentangGoreng.jpeg",
             "price": 12000,
             "category": "dll",
             "all": "all menu",
@@ -30,7 +30,7 @@
         {
             "id": "m004",
             "name": "Nasi Goreng",
-            "image": "/public/nasiGoreng.jpg",
+            "image": "/dist/public/nasiGoreng.jpg",
             "price": 15000,
             "category": "nasi",
             "all": "all menu",
@@ -39,7 +39,7 @@
         {
             "id": "m005",
             "name": "Roti",
-            "image": "/public/roti.jpg",
+            "image": "/dist/public/roti.jpg",
             "price": 10000,
             "category": "dll",
             "all": "all menu",
@@ -48,7 +48,7 @@
         {
             "id": "m006",
             "name": "Salad",
-            "image": "/public/salad.jpg",
+            "image": "/dist/public/salad.jpg",
             "price": 15000,
             "category": "dll",
             "all": "all menu",
@@ -57,7 +57,7 @@
         {
             "id": "m007",
             "name": "Ayam Bakar",
-            "image": "/public/ayamBakarMadu.jpg",
+            "image": "/dist/public/ayamBakarMadu.jpg",
             "price": 13000,
             "category": "ayam",
             "all": "all menu",
@@ -66,7 +66,7 @@
         {
             "id": "m008",
             "name": "Sate Padang",
-            "image": "/public/satePadang.jpg",
+            "image": "/dist/public/satePadang.jpg",
             "price": 15000,
             "category": "dll",
             "all": "all menu",
@@ -75,7 +75,7 @@
         {
             "id": "m009",
             "name": "Donat",
-            "image": "/public/donat.jpg",
+            "image": "/dist/public/donat.jpg",
             "price": 10000,
             "category": "dll",
             "all": "all menu",
@@ -84,7 +84,7 @@
         {
             "id": "m010",
             "name": "Seblak",
-            "image": "/public/seblak.jpg",
+            "image": "/dist/public/seblak.jpg",
             "price": 10000,
             "category": "dll",
             "all": "all menu",
@@ -93,7 +93,7 @@
         {
             "id": "m011",
             "name": "Meat Lover",
-            "image": "/public/meat-lover.jpg",
+            "image": "/dist/public/meat-lover.jpg",
             "price": 49500,
             "category": "pizza",
             "all": "all menu",
@@ -102,7 +102,7 @@
         {
             "id": "m012",
             "name": "Super Supreme",
-            "image": "/public/supreme.jpg",
+            "image": "/dist/public/supreme.jpg",
             "price": 49500,
             "category": "pizza",
             "all": "all menu",
@@ -111,7 +111,7 @@
         {
             "id": "m013",
             "name": "Tuna Melt",
-            "image": "/public/tuna-melt.jpg",
+            "image": "/dist/public/tuna-melt.jpg",
             "price": 49500,
             "category": "pizza",
             "all": "all menu",
@@ -120,7 +120,7 @@
         {
             "id": "m014",
             "name": "American Favourite",
-            "image": "/public/american-favourite.jpg",
+            "image": "/dist/public/american-favourite.jpg",
             "price": 49500,
             "category": "pizza",
             "all": "all menu",
@@ -129,7 +129,7 @@
         {
             "id": "m015",
             "name": "Beef Spaghetti",
-            "image": "/public/beef-spaghetti.jpg",
+            "image": "/dist/public/beef-spaghetti.jpg",
             "price": 43000,
             "category": "pasta",
             "all": "all menu",
@@ -138,7 +138,7 @@
         {
             "id": "m016",
             "name": "Beef Lasagna",
-            "image": "/public/beef-lasagna.jpg",
+            "image": "/dist/public/beef-lasagna.jpg",
             "price": 48000,
             "category": "pasta",
             "all": "all menu",
@@ -147,7 +147,7 @@
         {
             "id": "m017",
             "name": "Creamy Beef Fettuccine",
-            "image": "/public/creamy-beef-fettuccine.jpg",
+            "image": "/dist/public/creamy-beef-fettuccine.jpg",
             "price": 43000,
             "category": "pasta",
             "all": "all menu",
@@ -156,7 +156,7 @@
         {
             "id": "m018",
             "name": "Meatballs Beef Mushroom",
-            "image": "/public/meatballs-beef-mushroom.jpg",
+            "image": "/dist/public/meatballs-beef-mushroom.jpg",
             "price": 40000,
             "category": "nasi",
             "all": "all menu",
@@ -165,7 +165,7 @@
         {
             "id": "m019",
             "name": "Black Pepper Chicken",
-            "image": "/public/black-pepper-chicken.jpg",
+            "image": "/dist/public/black-pepper-chicken.jpg",
             "price": 40000,
             "category": "nasi",
             "all": "all menu",
@@ -174,7 +174,7 @@
         {
             "id": "m020",
             "name": "Oriental Chicken",
-            "image": "/public/oriental-chicken.jpg",
+            "image": "/dist/public/oriental-chicken.jpg",
             "price": 40000,
             "category": "nasi",
             "all": "all menu",
@@ -183,7 +183,7 @@
         {
             "id": "m021",
             "name": "Choco Mint",
-            "image": "/public/choco-mint.jpg",
+            "image": "/dist/public/choco-mint.jpg",
             "price": 24000,
             "category": "minuman",
             "all": "all menu",
@@ -192,7 +192,7 @@
         {
             "id": "m022",
             "name": "Toffee Coffee",
-            "image": "/public/toffee-coffee.jpg",
+            "image": "/dist/public/toffee-coffee.jpg",
             "price": 24000,
             "category": "minuman",
             "all": "all menu",
@@ -201,7 +201,7 @@
         {
             "id": "m023",
             "name": "Green Tea Shake",
-            "image": "/public/green-tea-shake.jpg",
+            "image": "/dist/public/green-tea-shake.jpg",
             "price": 24000,
             "category": "minuman",
             "all": "all menu",
@@ -210,7 +210,7 @@
         {
             "id": "m024",
             "name": "Strawberry Milkshake",
-            "image": "/public/strawberry-milkshake.jpg",
+            "image": "/dist/public/strawberry-milkshake.jpg",
             "price": 24000,
             "category": "minuman",
             "all": "all menu",
@@ -219,7 +219,7 @@
         {
             "id": "m025",
             "name": "Chocolate Milkshake",
-            "image": "/public/chocolate-milkshake.jpg",
+            "image": "/dist/public/chocolate-milkshake.jpg",
             "price": 24000,
             "category": "minuman",
             "all": "all menu",
@@ -228,7 +228,7 @@
         {
             "id": "m026",
             "name": "Nasi Padang",
-            "image": "/public/nasiPadang.jpg",
+            "image": "/dist/public/nasiPadang.jpg",
             "price": 10000,
             "category": "nasi",
             "all": "all menu",
@@ -237,7 +237,7 @@
         {
             "id": "m027",
             "name": "Nila Bakar",
-            "image": "/public/nilaBakar.jpg",
+            "image": "/dist/public/nilaBakar.jpg",
             "price": 20000,
             "category": "dll",
             "all": "all menu",
