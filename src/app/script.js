@@ -12,6 +12,7 @@ $(document).ready(function () {
 
   semuaMenu();
 
+  // fungsi kategori
   $(".Kategori").click(function () {
     // Mengubah active
     $(".Kategori").removeClass("text-accent");
@@ -387,11 +388,7 @@ $(document).ready(function () {
     hitung();
   });
 
-  // Search functionality
-  // const btnSearch = $("#btnSearch");
-
-  // inpSearch.addEventListener("input", function () {
-  // const valSearch = inpSearch.value.toLowerCase();
+  // fungsi search
   const inpSearch = $("#inpSearch");
 
   inpSearch.on("input", function () {
@@ -414,41 +411,4 @@ $(document).ready(function () {
       });
     });
   });
-
-  // $("#btnSearch")
-  //   .unbind("click")
-  //   .bind("click", function (e) {
-  //     // console.log($("#inpSearch").val());
-  //     const inpSearch = $("#inpSearch").val();
-
-  //     // Menampilkan sesuai search
-  //     $.getJSON("/json/product.json", function (data) {
-  //       let menu = data.menu;
-  //       let content = "";
-
-  //       $.each(menu, function (i, data) {
-  //         if (data.name == inpSearch) {
-  //           content += TemplateCard(data);
-  //           $("#menu").html(content);
-  //         } else if (data.all == inpSearch) {
-  //           content += TemplateCard(data);
-  //           $("#menu").html(content);
-  //         }
-  //       });
-  //     });
-  //   });
-
-  // // Loop through product boxes and show/hide based on search term
-  // const productBoxes = document.querySelectorAll(".product-box");
-  // productBoxes.forEach(function (box) {
-  //   // Check if dataset properties are defined
-  //   const productName = (box.dataset.name || "").toLowerCase();
-  //   const productCategories = (box.dataset.categories || "").toLowerCase();
-
-  //   box.style.display =
-  //     productName.includes(searchTerm) ||
-  //     productCategories.includes(searchTerm)
-  //       : "none";
-  // });
-  // });
 });
